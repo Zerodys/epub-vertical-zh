@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf"
+         version="3.0"
+         xml:lang="zh-Hant"
+         unique-identifier="uid"
+         prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <!-- REQUIRED: Unique identifier (使用 ISBN 或 UUID) -->
+        <dc:identifier id="uid">urn:uuid:20260320-0000-0000-0000-000000000001</dc:identifier>
+
+        <!-- REQUIRED: 書名 -->
+        <dc:title xml:lang="zh-Hant">繁體中文豎排書籍範本</dc:title>
+        <dc:title xml:lang="en">Chinese Traditional Vertical EPUB Template</dc:title>
+
+        <!-- REQUIRED: 主要語言 — BCP 47 繁體中文標籤 -->
+        <dc:language>zh-Hant</dc:language>
+        <dc:language id="lang-tw" scheme="dcterms:RFC3066">zh-TW</dc:language>
+
+        <!-- REQUIRED: 最後修改時間 (W3C DateTime 格式) -->
+        <meta property="dcterms:modified">2026-03-20T00:00:00Z</meta>
+
+        <!-- 作者 -->
+        <dc:creator id="creator" xml:lang="zh-Hant">作者名稱</dc:creator>
+
+        <!-- 出版社 -->
+        <dc:publisher xml:lang="zh-Hant">出版社名稱</dc:publisher>
+
+        <!-- 出版日期 -->
+        <dc:date>2026-03-20</dc:date>
+
+        <!-- 書籍描述 -->
+        <dc:description xml:lang="zh-Hant">本 EPUB 範本展示繁體中文豎排的完整實現方式，包含 CSS Writing Modes、Vendor Prefixes、Ruby 注音、豎排段落等最佳實踐。</dc:description>
+
+        <!-- 書籍分類 -->
+        <dc:subject xml:lang="zh-Hant">中文文學</dc:subject>
+        <dc:subject xml:lang="zh-Hant">電子書</dc:subject>
+
+        <!-- 授權條款 -->
+        <dc:rights xml:lang="zh-Hant">本著作採用創用 CC 姓名標示-相同方式分享 4.0 國際授權條款</dc:rights>
+
+        <!-- ========== EPUB 3 閱讀系統元數據 ========== -->
+        <!-- 豎排：從右至左翻頁 + 豎向書寫 -->
+        <meta property="rendition:orientation">portrait</meta>
+        <meta property="rendition:layout">reflowable</meta>
+        <meta property="rendition:spread">auto</meta>
+
+        <!-- Apple Books (iBooks) 豎排滾動軸 -->
+        <meta property="ibooks:scroll-axis">vertical</meta>
+
+        <!-- 無障礙閱讀 -->
+        <meta property="dcterms:accessibilityFeature">structuralNavigation</meta>
+    </metadata>
+
+    <manifest>
+        <!-- Navigation Document (EPUB 3 — 必需) -->
+        <item id="nav"
+              href="nav.xhtml"
+              properties="nav"
+              media-type="application/xhtml+xml"/>
+
+        <!-- Legacy NCX (EPUB 2 向後兼容) -->
+        <item id="ncx"
+              href="toc.ncx"
+              media-type="application/x-dtbncx+xml"/>
+
+        <!-- 封面圖片 -->
+        <item id="cover-image"
+              href="images/cover.png"
+              media-type="image/png"
+              properties="cover-image"/>
+
+        <!-- 主樣式表 -->
+        <item id="css-vertical"
+              href="styles/vertical.css"
+              media-type="text/css"/>
+
+        <!-- ========== 內容文檔 ========== -->
+        <item id="cover"
+              href="xhtml/cover.xhtml"
+              media-type="application/xhtml+xml"
+              properties="svg"/>
+        <item id="titlepage"
+              href="xhtml/titlepage.xhtml"
+              media-type="application/xhtml+xml"/>
+        <item id="chapter01"
+              href="xhtml/chapter01.xhtml"
+              media-type="application/xhtml+xml"/>
+        <item id="chapter02"
+              href="xhtml/chapter02.xhtml"
+              media-type="application/xhtml+xml"/>
+
+        <!-- ========== 嵌入字體 (預留) ========== -->
+        <!-- 取消注釋並放入字體檔案後啟用
+        <item id="font-serif-zh"
+              href="fonts/NotoSerifTC-Regular.otf"
+              media-type="application/vnd.ms-opentype"/>
+        -->
+    </manifest>
+
+    <!--
+        page-progression-direction="rtl"
+        配合 writing-mode: vertical-rl
+        實現從右至左翻頁（傳統中式裝訂）
+    -->
+    <spine page-progression-direction="rtl" toc="ncx">
+        <itemref idref="titlepage"/>
+        <itemref idref="chapter01"/>
+        <itemref idref="chapter02"/>
+    </spine>
+
+    <!-- 向後兼容指南 -->
+    <guide>
+        <reference type="cover"     title="封面"      href="xhtml/cover.xhtml"/>
+        <reference type="title"     title="書名頁"    href="xhtml/titlepage.xhtml"/>
+        <reference type="toc"       title="目錄"      href="nav.xhtml"/>
+        <reference type="bodymatter" title="正文"     href="xhtml/chapter01.xhtml"/>
+    </guide>
+</package>
