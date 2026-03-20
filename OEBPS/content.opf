@@ -89,6 +89,12 @@
         <item id="chapter02"
               href="xhtml/chapter02.xhtml"
               media-type="application/xhtml+xml"/>
+        <item id="chapter03"
+              href="xhtml/chapter03.xhtml"
+              media-type="application/xhtml+xml"/>
+        <item id="chapter04"
+              href="xhtml/chapter04.xhtml"
+              media-type="application/xhtml+xml"/>
 
         <!-- ========== 嵌入字體 (預留) ========== -->
         <!-- 取消注釋並放入字體檔案後啟用
@@ -107,6 +113,8 @@
         <itemref idref="titlepage"/>
         <itemref idref="chapter01"/>
         <itemref idref="chapter02"/>
+        <itemref idref="chapter03"/>
+        <itemref idref="chapter04"/>
     </spine>
 
     <!-- 向後兼容指南 -->
@@ -115,5 +123,7 @@
         <reference type="title"     title="書名頁"    href="xhtml/titlepage.xhtml"/>
         <reference type="toc"       title="目錄"      href="nav.xhtml"/>
         <reference type="bodymatter" title="正文"     href="xhtml/chapter01.xhtml"/>
+        <reference type="chapter"    title="第三章　雙行夾注" href="xhtml/chapter03.xhtml"/>
+        <reference type="chapter"    title="第四章　彈窗注釋" href="xhtml/chapter04.xhtml"/>
     </guide>
 </package>
