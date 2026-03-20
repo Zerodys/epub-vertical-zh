@@ -355,3 +355,174 @@ th {
 .dialogue p::after {
     content: close-quote;
 }
+
+/* ================================================================
+   16-a. 雙行夾注（側注 / 邊注）— 主流實現
+   — 小字注在左，大字正文在右，橫向對齊
+   — 適用於：大學章句、詩經鄭箋、傳統註疏體
+   — 實現方式：flex 橫排＋各自豎排，兼容性最佳
+
+   注意：html 與 body 兩層皆需設定 writing-mode
+   否則部分閱讀器（如某些滾動模式）翻頁方向異常
+   來源：好讀二代 / ShuBook X 開發團隊
+   ================================================================ */
+
+/* 夾注容器：flex 橫向，注在左、原文在右 */
+.vertical-note {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    /* 橫向左→右對齊（視覺上注在左） */
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    /* 垂直居中對齊 */
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 0.2em 0;
+}
+
+.note-text {
+    /*
+     * 注釋文字：紅色 + 小字
+     * 寬度固定為正文 45%，確保不超出注釋列
+     */
+    width: 45%;
+    -webkit-writing-mode: vertical-rl;
+    -epub-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+
+    -webkit-text-orientation: upright;
+    -epub-text-orientation: upright;
+    text-orientation: upright;
+
+    font-family: "Noto Serif CJK TC",
+                 "Noto Serif SC",
+                 "Source Han Serif TC",
+                 serif;
+    font-size: 0.55em;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    color: #c0392b;
+    text-align: right;
+    direction: rtl;
+
+    padding-right: 0.3em;
+    margin-right: 0.3em;
+}
+
+.main-text {
+    /*
+     * 正文文字：黑色 + 大字
+     * flex: 1 佔據剩餘空間
+     */
+    -webkit-flex: 1;
+    flex: 1;
+    -webkit-writing-mode: vertical-rl;
+    -epub-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+
+    -webkit-text-orientation: upright;
+    -epub-text-orientation: upright;
+    text-orientation: upright;
+
+    font-family: "Noto Serif CJK TC",
+                 "Noto Serif SC",
+                 "Source Han Serif TC",
+                 serif;
+    font-size: 1em;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    color: #1a1a1a;
+    text-align: justify;
+    direction: rtl;
+}
+
+/* 夾注段落內的普通段落（不用夾注時） */
+.vertical-note + p {
+    margin-top: 0.8em;
+}
+
+/* 夾注內的 Ruby（小字 + 注音 + 紅色） */
+.note-text ruby {
+    ruby-position: over;
+    -webkit-ruby-position: over;
+}
+
+.note-text rt {
+    font-size: 0.5em;
+    color: #c0392b;
+}
+
+/* 夾注中的強調（與正文一致） */
+.note-text em,
+.note-text strong {
+    font-weight: bold;
+    color: #c0392b;
+}
+
+/* 純文字段落（不使用夾注時的標準段落） */
+.paragraph {
+    margin: 0.3em 0;
+    text-indent: 2em;
+}
+
+/* 詩歌段落：居中對齊 */
+.verse {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+.verse-line {
+    -webkit-writing-mode: horizontal-tb;
+    -epub-writing-mode: horizontal-tb;
+    -ms-writing-mode: lr-tb;
+    writing-mode: horizontal-tb;
+    font-size: 1em;
+    line-height: 2;
+    text-indent: 0;
+    margin: 0;
+}
+
+/* ================================================================
+   16-b. Tufte 風格旁注（浮動至邊緣）
+   — 注釋浮動至欄外邊緣，不佔據正文寬度
+   — 適用於：較短的註釋、術語說明、術語解釋
+   — 注意：float 在部分閱讀器中支援有限，建議作為補充樣式
+   — 來源：Tufte CSS / gaoryrt.com
+   ================================================================ */
+
+.sidenote {
+    float: right;
+    clear: right;
+    -webkit-margin-start: 1em;
+    margin-inline-start: 1em;
+    -webkit-margin-end: -40%;
+    margin-inline-end: -40%;
+    -webkit-margin-before: 0.5em;
+    margin-block-start: 0.5em;
+    width: 38%;
+
+    -webkit-writing-mode: vertical-rl;
+    -epub-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+
+    font-size: 0.55em;
+    color: #c0392b;
+    text-align: left;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+}
+
+.sidenote::before {
+    content: "※ ";
+    color: #c0392b;
+}
