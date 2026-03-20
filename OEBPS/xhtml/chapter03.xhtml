@@ -129,6 +129,35 @@
                 再續一段，以展示長段文字在豎排中的呈現效果。中文豎排之妙，在於文字如流水般自上而下、自右而左，讀者目光隨字而行，自然形成韻律之感。
             </p>
 
+            <!-- ========== 第六節：Kindle 兼容性 ========== -->
+            <section epub:type="level1" id="s3-6">
+                <h2>第六節　Kindle 兼容性說明</h2>
+
+                <p>本範本在 Apple Books、Google Play Books、Calibre Viewer 等閱讀器中可完整呈現豎排效果。若目標設備為 Amazon Kindle，需注意以下事項：</p>
+
+                <h3>Calibre 轉換時的已知問題</h3>
+
+                <p>Calibre 在轉換 EPUB 至 AZW3 時，會刪除 <code>-webkit-writing-mode</code> 和 <code>-epub-writing-mode</code> 屬性（Calibre Bug #1862447）。解決方式是透過 Extra CSS 重新注入宣告：</p>
+
+                <pre>.vrtl { writing-mode: vertical-rl; }
+.hltr { writing-mode: horizontal-tb; }</pre>
+
+                <h3>Kindle Enhanced Typesetting</h3>
+
+                <p>Amazon Kindle 的 Enhanced Typesetting 模式支援 <code>writing-mode: vertical-rl</code> 和 <code>-webkit-text-orientation</code>（含 upright）。在 KDP 上傳書籍後，此功能會自動啟用（若書籍通過檢查）。</p>
+
+                <h3>Kindle 雙行夾注 Fallback</h3>
+
+                <p>Kindle 上的 flex 布局支援不穩定，若雙行夾注顯示異常，可使用 float 方式的 fallback 類：</p>
+
+                <pre>&lt;div class="vertical-note"&gt;
+  &lt;span class="note-text vn-note-kindle"&gt;注：小字紅色，浮至右側&lt;/span&gt;
+  &lt;span class="main-text vn-main-kindle"&gt;大學之道，在明明德。&lt;/span&gt;
+&lt;/div&gt;</pre>
+
+                <p>完整 Kindle Extra CSS 片段請參見 <code>styles/vertical.css</code> 的 Section 17，以及專案 README.md 中的「Kindle 轉換指南」。</p>
+            </section>
+
         </section>
 
     </section>
