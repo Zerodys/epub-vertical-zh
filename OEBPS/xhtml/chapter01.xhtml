@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      lang="zh-Hant"
+      dir="rtl">
+<head>
+    <title>第一章　概述</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/vertical.css"/>
+</head>
+<body>
+    <section epub:type="chapter" id="chapter01">
+
+        <!-- 章節標題（橫排居中） -->
+        <h1>第一章　概述</h1>
+
+        <!-- ========== 第一節 ========== -->
+        <section epub:type="level1" id="s1-1">
+            <h2>第一節　背景介紹</h2>
+
+            <p>繁體中文的豎排書寫有著數千年的歷史傳統，是中華文化重要的視覺表現形式。與橫排由左至右不同，傳統中文書籍採用由右至左、由上至下的閱讀順序，這種設計不僅符合人眼的自然掃描路徑，也造就了書法、版刻等獨特的藝術形式。</p>
+
+            <p>在數位出版的時代，如何在電子閱讀器上忠實呈現傳統豎排文字，成為技術上的一大挑戰。本範本整合了 EPUB 3 標準與 CSS Writing Modes 規範，提供一套完整可行的解決方案。</p>
+
+            <blockquote>
+                <p>「書法之道，在乎氣韻生動。橫豎撇捺，皆有法度。」</p>
+            </blockquote>
+
+            <p>本 EPUB 範本支援以下核心功能：</p>
+            <ul>
+                <li>CSS Writing Modes 全系列 vendor prefixes</li>
+                <li>繁體中文　<span class="tcy">2026</span>　年　數字自動直立</li>
+                <li>Ruby 注音：<ruby>繁體<rt>ㄈㄢˊ ㄊㄧˇ</rt></ruby>、<ruby>豎排<rt>ㄕㄨˋ ㄆㄞˊ</rt></ruby></li>
+                <li>圖片、表格自動轉為橫排</li>
+                <li>章節分頁控制</li>
+                <li>兩端對齊段落</li>
+            </ul>
+        </section>
+
+        <!-- ========== 第二節 ========== -->
+        <section epub:type="level1" id="s1-2">
+            <h2>第二節　相關研究</h2>
+
+            <p>針對電子書豎排文字的研究可追溯至 EPUB 2 時代，但受限於當時的 CSS 標準，實現方式極為繁瑣且兼容性差。EPUB 3 的推出帶來了標準化的書寫模式支援，使得情況大為改善。</p>
+
+            <p>以下是主要閱讀器對豎排文字的支援情況：</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>閱讀器</th>
+                        <th>支援程度</th>
+                        <th>備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apple Books</td>
+                        <td>✅ 完整支援</td>
+                        <td>使用 -webkit-writing-mode</td>
+                    </tr>
+                    <tr>
+                        <td>Google Play Books</td>
+                        <td>✅ 完整支援</td>
+                        <td>支援混合格式</td>
+                    </tr>
+                    <tr>
+                        <td>Calibre</td>
+                        <td>✅ 完整支援</td>
+                        <td>推薦使用</td>
+                    </tr>
+                    <tr>
+                        <td>Thorium Reader</td>
+                        <td>✅ 完整支援</td>
+                        <td>Readium CSS 標準</td>
+                    </tr>
+                    <tr>
+                        <td>Amazon Kindle</td>
+                        <td>⚠️ 有限支援</td>
+                        <td>需透過 Calibre 轉換</td>
+                    </tr>
+                    <tr>
+                        <td>KOReader</td>
+                        <td>⚠️ 部分支援</td>
+                        <td>可能有渲染問題</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>由此可見，採用標準化的 CSS 書寫模式，配合完善的 vendor prefixes，是目前最廣泛兼容的做法。</p>
+
+            <div class="note-marker">
+                <p>提示：不同的閱讀器對 <code>text-orientation</code> 的預設值可能不同。如需嚴格控制，可明確設定為 <code>upright</code>（所有字符直立）或 <code>mixed</code>（標點符號旋轉）。</p>
+            </div>
+        </section>
+
+    </section>
+</body>
+</html>
