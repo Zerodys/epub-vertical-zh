@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="styles/vertical.css"/>
 </head>
-<body>
-    <!-- 封面頁：使用 SVG 以確保跨設備一致性 -->
+<body class="cover-page">
+    <!-- 封面頁：標題左上，作者右下 -->
     <svg xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          version="1.1"
@@ -20,56 +20,67 @@
         <!-- 封面背景 -->
         <rect width="1200" height="1600" fill="#f5f0e8"/>
 
-        <!-- 頂部裝飾線 -->
-        <line x1="100" y1="200" x2="1100" y2="200" stroke="#8b7355" stroke-width="2"/>
-        <line x1="120" y1="210" x2="1080" y2="210" stroke="#8b7355" stroke-width="0.5"/>
+        <!-- 左側裝飾豎線 -->
+        <line x1="80" y1="120" x2="80" y2="1480" stroke="#8b7355" stroke-width="3"/>
+        <line x1="95" y1="140" x2="95" y2="1460" stroke="#8b7355" stroke-width="1"/>
 
-        <!-- 書名 -->
-        <text x="600" y="650"
+        <!-- 右上角裝飾 -->
+        <line x1="100" y1="100" x2="300" y2="100" stroke="#8b7355" stroke-width="2"/>
+        <line x1="100" y1="100" x2="100" y2="300" stroke="#8b7355" stroke-width="2"/>
+
+        <!-- 左上角書名 -->
+        <text x="150" y="300"
               font-family="Noto Serif CJK TC, Source Han Serif TC, serif"
-              font-size="96"
+              font-size="72"
               font-weight="bold"
-              text-anchor="middle"
+              text-anchor="start"
               fill="#2c2c2c"
-              letter-spacing="0.3em">
+              letter-spacing="0.2em">
             繁體中文
         </text>
-        <text x="600" y="800"
+        <text x="150" y="420"
               font-family="Noto Serif CJK TC, Source Han Serif TC, serif"
-              font-size="96"
+              font-size="72"
               font-weight="bold"
-              text-anchor="middle"
+              text-anchor="start"
               fill="#2c2c2c"
-              letter-spacing="0.3em">
+              letter-spacing="0.2em">
             豎排範本
         </text>
 
         <!-- 副標題 -->
-        <text x="600" y="920"
+        <text x="150" y="520"
               font-family="Noto Serif CJK TC, serif"
-              font-size="36"
-              text-anchor="middle"
-              fill="#666666"
-              letter-spacing="0.2em">
+              font-size="24"
+              text-anchor="start"
+              fill="#888888"
+              letter-spacing="0.15em">
             Chinese Traditional Vertical EPUB
         </text>
 
-        <!-- 分隔線 -->
-        <line x1="400" y1="1000" x2="800" y2="1000" stroke="#8b7355" stroke-width="1"/>
-
-        <!-- 作者 -->
-        <text x="600" y="1100"
+        <!-- 右下角作者 -->
+        <text x="1100" y="1350"
               font-family="Noto Serif CJK TC, serif"
-              font-size="32"
-              text-anchor="middle"
+              font-size="28"
+              text-anchor="end"
               fill="#555555"
-              letter-spacing="0.2em">
+              letter-spacing="0.15em">
             作者名稱
         </text>
 
-        <!-- 底部裝飾線 -->
-        <line x1="120" y1="1390" x2="1080" y2="1390" stroke="#8b7355" stroke-width="0.5"/>
-        <line x1="100" y1="1400" x2="1100" y2="1400" stroke="#8b7355" stroke-width="2"/>
+        <!-- 右下角出版社 -->
+        <text x="1100" y="1420"
+              font-family="Noto Serif CJK TC, serif"
+              font-size="20"
+              text-anchor="end"
+              fill="#888888"
+              letter-spacing="0.1em">
+            出版社名稱
+        </text>
+
+        <!-- 右下角裝飾 -->
+        <line x1="900" y1="1500" x2="1100" y2="1500" stroke="#8b7355" stroke-width="1"/>
+        <line x1="1100" y1="1200" x2="1100" y2="1500" stroke="#8b7355" stroke-width="1"/>
     </svg>
 </body>
 </html>

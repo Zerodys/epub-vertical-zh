@@ -93,28 +93,29 @@ p {
 }
 
 /* ================================================================
-   4. 章節標題 — 保持橫排居中（對比豎排正文）
+   4. 章節標題 — 豎排居上（小說章節樣式）
    ================================================================ */
 h1, h2, h3, h4, h5, h6 {
-    /* 標題改回橫排居中 */
-    -webkit-writing-mode: horizontal-tb;
-    -epub-writing-mode: horizontal-tb;
-    -ms-writing-mode: lr-tb;
-    writing-mode: horizontal-tb;
+    /* 保持豎排 */
+    -webkit-writing-mode: vertical-rl;
+    -epub-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
 
-    /* 文字方向：混合（允許標點旋轉） */
-    -webkit-text-orientation: mixed;
-    text-orientation: mixed;
+    /* 字符直立 */
+    -webkit-text-orientation: upright;
+    -epub-text-orientation: upright;
+    text-orientation: upright;
 
     font-family: "Noto Serif CJK TC", "Source Han Serif TC", serif;
     font-weight: bold;
-    text-align: center;
-    letter-spacing: 0.1em;
+    text-align: left;
+    letter-spacing: 0.15em;
 }
 
-h1 { font-size: 1.8em; margin: 1em 0; }
-h2 { font-size: 1.4em; margin: 0.8em 0; }
-h3 { font-size: 1.2em; margin: 0.6em 0; }
+h1 { font-size: 1.6em; margin: 0.5em 0; }
+h2 { font-size: 1.3em; margin: 0.5em 0; }
+h3 { font-size: 1.1em; margin: 0.5em 0; }
 
 /* ================================================================
    5. 阿拉伯數字、英文、拉丁文字 — Tatechuyoko (橫排於豎文)

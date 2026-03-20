@@ -115,6 +115,7 @@
         <itemref idref="chapter02"/>
         <itemref idref="chapter03"/>
         <itemref idref="chapter04"/>
+        <itemref idref="nav"/>
     </spine>
 
     <!-- 向後兼容指南 -->
