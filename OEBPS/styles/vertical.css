@@ -595,3 +595,180 @@ rt {
     font-size: 0.5em;
     color: inherit;
 }
+
+/* ================================================================
+   18. 注释弹窗系统（:target popup + 竖排定位）
+   — CSS :target 弹窗，无需 JavaScript
+   — 兼容阅读器：Readium、Calibre Viewer、web 版 EPUB 阅读器
+   — Apple Books / Google Play：使用原生 epub:type="footnote" 弹窗
+   — 竖排定位：弹窗置于屏幕左侧边缘（inline-end），正文水平排版
+   — 不会覆盖已有的竖排主体和双行夹注样式
+   ================================================================ */
+
+/* --- 18-a. 注释标记（上标数字） --- */
+.noteref {
+    color: #8b4513;
+    font-size: 0.5em;
+    vertical-align: super;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 0.15em;
+    font-family: "Noto Serif CJK TC", serif;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0.1em 0.3em;
+    border-radius: 0.2em;
+}
+
+.noteref:hover {
+    background-color: #c0392b;
+    color: #fff;
+}
+
+a[epub\:type="noteref"] {
+    text-decoration: none;
+    color: inherit;
+}
+
+a[epub\:type="noteref"] sup {
+    font-size: 0.5em;
+    color: #8b4513;
+    vertical-align: super;
+}
+
+a[epub\:type="noteref"]:hover sup {
+    color: #c0392b;
+}
+
+/* --- 18-b. 弹窗容器 — 隐藏，默认不显示 --- */
+.annotation-popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    /* 竖排定位：弹窗出现在屏幕左侧边缘 */
+    bottom: 3vh;
+    left: 3em;
+    width: 14em;
+    max-height: 72vh;
+    overflow-y: auto;
+    /* 弹窗内容使用水平排版，方便阅读 */
+    -webkit-writing-mode: horizontal-tb;
+    -epub-writing-mode: horizontal-tb;
+    -ms-writing-mode: lr-tb;
+    writing-mode: horizontal-tb;
+    background-color: #fffef5;
+    border: 1px solid #c9b99a;
+    border-radius: 4px;
+    padding: 1em 1.2em;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.12),
+                0 0 0 1px rgba(0,0,0,0.04);
+    font-family: "Noto Serif CJK TC", serif;
+    font-size: 0.8em;
+    line-height: 1.8;
+    color: #2c2c2c;
+    text-align: justify;
+    text-indent: 0;
+}
+
+/* :target 激活时显示弹窗 */
+.annotation-popup:target {
+    display: block;
+}
+
+/* --- 18-c. 弹窗内部元素 --- */
+.annotation-popup .popup-header {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px dotted #c9b99a;
+}
+
+.annotation-popup .popup-num {
+    font-size: 0.75em;
+    color: #8b4513;
+    font-weight: bold;
+}
+
+.annotation-popup .popup-close {
+    font-size: 0.75em;
+    color: #999;
+    text-decoration: none;
+}
+
+.annotation-popup .popup-close:hover {
+    color: #c0392b;
+}
+
+.annotation-popup p {
+    margin: 0.3em 0;
+    text-indent: 0;
+}
+
+.annotation-popup .popup-back {
+    display: block;
+    margin-top: 0.6em;
+    text-align: right;
+    font-size: 0.75em;
+    color: #999;
+    text-decoration: none;
+}
+
+.annotation-popup .popup-back:hover {
+    color: #8b4513;
+}
+
+/* --- 18-d. 章节末尾注释区（fallback 展示，弹窗不触发时可见） --- */
+.chapter-notes {
+    margin-top: 3em;
+    padding-top: 1.5em;
+    border-top: 1px double #8b7355;
+}
+
+.chapter-notes h2 {
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 1em;
+    color: #5c4033;
+    font-weight: bold;
+}
+
+.note-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-list li {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    gap: 0.8em;
+    margin: 0.6em 0;
+    line-height: 1.8;
+}
+
+.note-list .note-num {
+    min-width: 1.8em;
+    text-align: right;
+    color: #8b4513;
+    font-weight: bold;
+    font-size: 0.85em;
+    -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+}
+
+.note-list .note-text {
+    -webkit-writing-mode: horizontal-tb;
+    -epub-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+    font-size: 0.9em;
+    color: #444;
+    line-height: 1.8;
+    text-align: justify;
+}
