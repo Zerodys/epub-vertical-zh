@@ -37,6 +37,30 @@
                 <navLabel><text>第二節　實作細節</text></navLabel>
                 <content src="xhtml/chapter02.xhtml#s2-2"/>
             </navPoint>
+            </navPoint>
+        <navPoint id="np-ch3" playOrder="8">
+            <navLabel><text>第三章　雙行夾注</text></navLabel>
+            <content src="xhtml/chapter03.xhtml"/>
+            <navPoint id="np-ch3-s1" playOrder="9">
+                <navLabel><text>第一節　何謂雙行夾注</text></navLabel>
+                <content src="xhtml/chapter03.xhtml#s3-1"/>
+            </navPoint>
+            <navPoint id="np-ch3-s2" playOrder="10">
+                <navLabel><text>第二節　CSS 實現方式</text></navLabel>
+                <content src="xhtml/chapter03.xhtml#s3-2"/>
+            </navPoint>
+            <navPoint id="np-ch3-s3" playOrder="11">
+                <navLabel><text>第三節　詩經示例</text></navLabel>
+                <content src="xhtml/chapter03.xhtml#s3-3"/>
+            </navPoint>
+            <navPoint id="np-ch3-s4" playOrder="12">
+                <navLabel><text>第四節　Ruby 夾注混合</text></navLabel>
+                <content src="xhtml/chapter03.xhtml#s3-4"/>
+            </navPoint>
+            <navPoint id="np-ch3-s5" playOrder="13">
+                <navLabel><text>第五節　純段落正文</text></navLabel>
+                <content src="xhtml/chapter03.xhtml#s3-5"/>
+            </navPoint>
         </navPoint>
-    </navMap>
+        </navMap>
 </ncx>
