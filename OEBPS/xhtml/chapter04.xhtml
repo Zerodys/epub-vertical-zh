@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      lang="zh-Hant"
+      dir="rtl">
+<head>
+    <title>第四章　唐诗弹窗注释示例</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/vertical.css"/>
+</head>
+<body>
+    <section epub:type="chapter" id="chapter04">
+
+        <h1>第四章　唐诗弹窗注释示例</h1>
+
+        <!-- ========== 第一节：弹窗注释原理 ========== -->
+        <section epub:type="level1" id="s4-1">
+            <h2>第一節　何謂弹窗注释</h2>
+
+            <p>弹窗注释（Popup Annotation）是电子书中常见的交互形式：正文内以小号数字标记，读者点击后弹出注释浮层，阅读完毕后关闭返回。这种形式在 Apple Books、Google Play Books 等现代阅读器中均有原生支持。</p>
+
+            <p>本範本提供两种实现方式：</p>
+
+            <ul>
+                <li><strong>方式一：EPUB3 原生弹窗</strong> — 使用 <code>epub:type="noteref"</code> 与 <code>epub:type="footnote"</code>，Apple Books 等自动渲染为原生弹窗，无需额外 CSS</li>
+                <li><strong>方式二：CSS :target 弹窗</strong> — 纯 CSS 实现，通过 URL hash 激活，兼容 Readium、Calibre Viewer 等</li>
+            </ul>
+
+            <!-- 弹窗示例：点击 [1] 触发 -->
+            <p>
+                以下是 CSS :target 弹窗示例，点击方括号内的数字即可查看注释：
+                <a class="noteref" href="#popup-1">[1]</a>
+            </p>
+
+            <p>
+                再举一例，注释出现在诗句中的情况：
+                明月松间照，清泉石上流
+                <a class="noteref" href="#popup-2">[2]</a>
+            </p>
+
+            <!-- :target 弹窗定义（置于章节末尾也行，随处可放） -->
+            <!-- 弹窗 1 -->
+            <aside id="popup-1" class="annotation-popup" role="doc-note">
+                <div class="popup-header">
+                    <span class="popup-num">注　[1]</span>
+                    <a class="popup-close" href="#">✕</a>
+                </div>
+                <p>此处的「弹窗注释」指的是读者点击正文中的标记（如 [1]）后，在页面上方或侧边弹出的浮层窗口，可阅读注释内容后关闭返回。这种交互形式广泛存在于现代 EPUB 阅读器中。</p>
+                <a class="popup-back" href="#">↑ 返回正文</a>
+            </aside>
+
+            <!-- 弹窗 2 -->
+            <aside id="popup-2" class="annotation-popup" role="doc-note">
+                <div class="popup-header">
+                    <span class="popup-num">注　[2]</span>
+                    <a class="popup-close" href="#">✕</a>
+                </div>
+                <p>此联出自唐代诗人王维的《山居秋暝》。松、月、泉、石，构成了一幅清幽淡雅的秋山夜景图，是王维山水诗的代表作之一。</p>
+                <a class="popup-back" href="#">↑ 返回正文</a>
+            </aside>
+        </section>
+
+        <!-- ========== 第二节：《静夜思》完整示例 ========== -->
+        <section epub:type="level1" id="s4-2">
+            <h2>第二節　《靜夜思》全文弹窗注释</h2>
+
+            <p>以下为李白《静夜思》全文，配合五处弹窗注释。点击每句诗后的上标数字可查看注释弹窗：</p>
+
+            <!-- 诗标题 -->
+            <h3 class="poem-title">靜夜思</h3>
+            <p class="poem-author">李白</p>
+
+            <!-- 诗句 + 弹窗注释 -->
+            <!-- 第一句 -->
+            <p class="poem-line">
+                床前明月光，
+                <a class="noteref" href="#fn1-source">①</a>
+            </p>
+            <!-- 第二句 -->
+            <p class="poem-line">
+                疑是地上霜。
+                <a class="noteref" href="#fn2-source">②</a>
+            </p>
+            <!-- 第三句 -->
+            <p class="poem-line">
+                舉頭望明月，
+                <a class="noteref" href="#fn3-source">③</a>
+            </p>
+            <!-- 第四句 -->
+            <p class="poem-line">
+                低頭思故鄉。
+                <a class="noteref" href="#fn4-source">④</a>
+            </p>
+
+            <!-- 五处弹窗定义 -->
+            <aside id="fn1-source" class="annotation-popup" role="doc-footnote">
+                <div class="popup-header">
+                    <span class="popup-num">注　①</span>
+                    <a class="popup-close" href="#">✕</a>
+                </div>
+                <p>床：此字歷來有「窗」「床榻」「井欄」三說。宋代人注《靜夜思》多作「床前看月光」，可知宋人理解的「床」為「窗」之義，與後文「舉頭望明月」相呼應。</p>
+                <p>月：月光。詩題「靜夜思」，首句即以月光破題，靜中有動。</p>
+                <a class="popup-back" href="#">↑ 返回正文</a>
+            </aside>
+
+            <aside id="fn2-source" class="annotation-popup" role="doc-footnote">
+                <div class="popup-header">
+                    <span class="popup-num">注　②</span>
+                    <a class="popup-close" href="#">✕</a>
+                </div>
+                <p>霜：地面凝結的薄冰。此句以「霜」比月光，極言月色之清冷皎潔。李白以視覺錯覺入詩，月光映地，如霜滿地，營造出一片清寒寂靜的秋夜氛圍。</p>
+                <a class="popup-back" href="#">↑ 返回正文</a>
+            </aside>
+
+            <aside id="fn3-source" class="annotation-popup" role="doc-footnote">
+                <div class="popup-header">
+                    <span class="popup-num">注　③</span>
+                    <a class="popup-close" href="#">✕</a>
+                </div>
+                <p>舉頭：抬頭。明月當空，詩人抬頭凝望，情感由外境轉入內心。明月在中國詩歌傳統中象徵團圓與思念，是古詩中最常見的意象之一。</p>
+                <a class="popup-back" href="#">↑ 返回正文</a>
+            </aside>
+
+            <aside id="fn4-source" class="annotation-popup" role="doc-footnote">
+                <div class="popup-header">
+                    <span class="popup-num">注　④</span>
+                    <a class="popup-close" href="#">✕</a>
+                </div>
+                <p>故鄉：詩人故里。詩到此句意境突轉，由景入情。詩人由望月而懷人，由月光之清冷而觸發思鄉之情。短短二十字，情景交融，為千古傳誦之名篇。</p>
+                <p>此詩版本異文較多通行本「舉頭望明月，低頭思故鄉」，宋蜀本《李太白文集》作「擧頭望山月，低頭思故鄉」。</p>
+                <a class="popup-back" href="#">↑ 返回正文</a>
+            </aside>
+
+            <!-- ========== 第三节：技术说明 ========== -->
+            <h2>第三節　实现原理</h2>
+
+            <p>弹窗的核心机制是 CSS <code>:target</code> 伪类。当 URL 中的 hash（如 <code>#fn1-source</code>）与元素的 <code>id</code> 匹配时，<code>:target</code> 生效，弹窗显示。</p>
+
+            <pre>&lt;!-- 正文中的注释标记 --&gt;
+&lt;a class="noteref" href="#fn1-source"&gt;①&lt;/a&gt;
+
+&lt;!-- 弹窗定义（id 必须与 href hash 一致） --&gt;
+&lt;aside id="fn1-source" class="annotation-popup"&gt;
+    &lt;div class="popup-header"&gt;
+        &lt;span class="popup-num"&gt;注　①&lt;/span&gt;
+        &lt;a class="popup-close" href="#"&gt;✕&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;p&gt;注释内容...&lt;/p&gt;
+    &lt;a class="popup-back" href="#"&gt;↑ 返回正文&lt;/a&gt;
+&lt;/aside&gt;</pre>
+
+            <pre>/* CSS 核心：:target 激活弹窗 */
+.annotation-popup {
+    display: none;
+}
+.annotation-popup:target {
+    display: block;  /* 激活时显示 */
+}</pre>
+
+            <h3>阅读器兼容性</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>阅读器</th>
+                        <th>:target 弹窗</th>
+                        <th>epub:type 原生弹窗</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apple Books</td>
+                        <td>❌ 不支持</td>
+                        <td>✅ 原生弹窗</td>
+                    </tr>
+                    <tr>
+                        <td>Google Play Books</td>
+                        <td>❌ 不支持</td>
+                        <td>✅ 原生弹窗</td>
+                    </tr>
+                    <tr>
+                        <td>Thorium Reader (Readium)</td>
+                        <td>✅ 支持</td>
+                        <td>✅ 原生弹窗</td>
+                    </tr>
+                    <tr>
+                        <td>Calibre Viewer</td>
+                        <td>✅ 支持</td>
+                        <td>❌ 不支持</td>
+                    </tr>
+                    <tr>
+                        <td>Foliate</td>
+                        <td>✅ 支持</td>
+                        <td>✅ 原生弹窗</td>
+                    </tr>
+                    <tr>
+                        <td>Kindle</td>
+                        <td>❌ 不支持</td>
+                        <td>❌ 不支持</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>最佳实践</strong>：同时使用 <code>epub:type="noteref"</code>（Apple Books 原生弹窗）和 <code>:target</code> 类（Readium 兼容），两种方式并存，覆盖所有主流阅读器。</p>
+
+            <h3>竖排中的弹窗定位</h3>
+
+            <p>在 <code>writing-mode: vertical-rl</code> 中，弹窗需要特殊定位：</p>
+
+            <ul>
+                <li>弹窗置于<strong>屏幕左侧</strong>（即竖排的内联末端方向）</li>
+                <li>弹窗内容使用 <code>writing-mode: horizontal-tb</code>，方便横向阅读长注释</li>
+                <li>宽度设为 <code>14em</code>（窄而高，符合竖排空间利用）</li>
+            </ul>
+
+            <p>完整 CSS 样式请参见 <code>styles/vertical.css</code> 的 Section 18。</p>
+
+        </section>
+
+    </section>
+</body>
+</html>
