@@ -526,3 +526,72 @@ th {
     content: "※ ";
     color: #c0392b;
 }
+
+/* ================================================================
+   17. Kindle / Calibre Extra CSS 片段
+   — Calibre 轉換時會刪除 -webkit-writing-mode 和 -epub-writing-mode
+   — 解決方案：在 Calibre Extra CSS 中注入以下內容
+   — 來源：Calibre Bug #1862447 / Kenrick's Notes 2024
+   ================================================================ */
+/*
+   【Calibre Extra CSS 使用方式】
+   轉換設定 → Look & Feel → Styling → Extra CSS
+   粘貼以下內容（不含 /* */ 包裝）
+
+   若使用 Calibre CLI：
+   ebook-convert input.epub output.azw3 \
+     --extra-css '.vrtl{writing-mode:vertical-rl}.hltr{writing-mode:horizontal-tb}'
+*/
+
+/* Kindle 豎排文字類 */
+.vrtl {
+    writing-mode: vertical-rl;
+}
+
+/* Kindle 橫排文字類（章節標題等） */
+.hltr {
+    writing-mode: horizontal-tb;
+}
+
+/* Kindle 雙行夾注 — 使用 block 而非 flex（Kindle flexbox 不穩定） */
+.vn-container {
+    /* Kindle 不支援 flex，改用 block 並排 */
+}
+
+.vn-note-kindle {
+    /* 小字注：在 Kindle 上用 block 模擬夾注 */
+    writing-mode: vertical-rl;
+    display: block;
+    float: right;
+    clear: right;
+    margin-right: 0.5em;
+    font-size: 0.55em;
+    color: #c0392b;
+    line-height: 1.6;
+}
+
+.vn-main-kindle {
+    /* 正文：標準豎排 */
+    writing-mode: vertical-rl;
+    display: block;
+    font-size: 1em;
+    color: #1a1a1a;
+}
+
+/* Kindle Tatechuyoko（數字橫排） */
+.tcy-kindle {
+    /* Kindle 不支援 text-combine-upright，改用 display:inline */
+    display: inline;
+    text-orientation: mixed;
+    writing-mode: horizontal-tb;
+}
+
+/* Kindle Ruby（Calibre 可能破壞 ruby-position） */
+ruby {
+    ruby-position: over;
+}
+
+rt {
+    font-size: 0.5em;
+    color: inherit;
+}
