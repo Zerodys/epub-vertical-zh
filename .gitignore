@@ -1,0 +1,21 @@
+# Build artifacts
+*.epub
+*.mobi
+*.azw3
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# EPUBCheck output
+*.epubcheck/
+
+# Fonts (large binaries)
+*.otf
+*.ttf
+*.woff
+*.woff2
