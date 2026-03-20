@@ -61,6 +61,10 @@
                 <navLabel><text>第五節　純段落正文</text></navLabel>
                 <content src="xhtml/chapter03.xhtml#s3-5"/>
             </navPoint>
+            <navPoint id="np-ch3-s6" playOrder="14">
+                <navLabel><text>第六節　Kindle 兼容性說明</text></navLabel>
+                <content src="xhtml/chapter03.xhtml#s3-6"/>
+            </navPoint>
         </navPoint>
         </navMap>
 </ncx>
