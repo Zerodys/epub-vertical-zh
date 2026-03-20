@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      lang="zh-Hant"
+      dir="rtl">
+<head>
+    <title>第三章　雙行夾注</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/vertical.css"/>
+</head>
+<body>
+    <section epub:type="chapter" id="chapter03">
+
+        <h1>第三章　雙行夾注</h1>
+
+        <!-- ========== 第一節：夾注原理 ========== -->
+        <section epub:type="level1" id="s3-1">
+            <h2>第一節　何謂雙行夾注</h2>
+
+            <p>雙行夾注，又稱側注、邊注，是中國古籍中最常見的註疏形式。其法：大字正文居右，小字注釋居左，兩者橫向對齊，如影隨形。此制始於宋代，盛於明清，凡儒家經典無不有此體例。</p>
+
+            <p>朱熹《四書章句集注》即為雙行夾注之典範：</p>
+
+            <!-- === 雙行夾注示例：《大學》首章 === -->
+            <div class="vertical-note">
+                <span class="note-text">
+                    孔氏之遺書也。初釋經一章，闡明明德之義。
+                </span>
+                <span class="main-text">
+                    大學之道，在明明德，在親民，在止於至善。
+                </span>
+            </div>
+
+            <div class="vertical-note">
+                <span class="note-text">
+                    明，明顯也。復其所得於天之光明本性也。
+                </span>
+                <span class="main-text">
+                    明明德。
+                </span>
+            </div>
+
+            <div class="vertical-note">
+                <span class="note-text">
+                    親，近也。程子曰：「親民」當作「新民」。
+                </span>
+                <span class="main-text">
+                    親民。
+                </span>
+            </div>
+
+            <div class="vertical-note">
+                <span class="note-text">
+                    止，居也。事物皆有倫理，人當止於其善。
+                </span>
+                <span class="main-text">
+                    止於至善。
+                </span>
+            </div>
+
+            <p>如上所示，每一夾注單元由兩部分構成：左側為朱熹之注，右側為經文原文。注字約佔原文百分之五十五的大小，以紅色區分之，視覺層次分明。</p>
+
+            <!-- ========== 第二節：CSS 實現 ========== -->
+            <h2>第二節　CSS 實現方式</h2>
+
+            <p>本範本採用 <code>flex</code> 佈局配合 <code>writing-mode: vertical-rl</code> 實現夾注：</p>
+
+            <pre>&lt;div class="vertical-note"&gt;
+  &lt;span class="note-text"&gt;注釋文字（小字紅色）&lt;/span&gt;
+  &lt;span class="main-text"&gt;正文文字（大字黑色）&lt;/span&gt;
+&lt;/div&gt;</pre>
+
+            <p>核心原理：</p>
+
+            <ul>
+                <li><code>display: flex; flex-direction: row</code> — 將注與正文橫向並排</li>
+                <li><code>justify-content: flex-start</code> — 注釋靠左，正文填滿右側</li>
+                <li>注與正文各自設定 <code>writing-mode: vertical-rl</code> — 兩者均為豎排</li>
+                <li><code>font-size: 0.55em</code> — 注釋縮小至原文約五成</li>
+                <li><code>color: #c0392b</code> — 紅色（接近硃砂色）區分注釋</li>
+            </ul>
+
+            <!-- ========== 第三節：詩經示例 ========== -->
+            <h2>第三節　詩經示例</h2>
+
+            <p>《詩經》鄭玄箋亦用此體：</p>
+
+            <div class="vertical-note">
+                <span class="note-text">
+                    關睢之鳥摯而有別，后妃說樂君子。
+                </span>
+                <span class="main-text">
+                    關關睢鳩，在河之洲。
+                </span>
+            </div>
+
+            <div class="vertical-note">
+                <span class="note-text">
+                    窈窕，幽閒也。淑，善也。逑，匹配也。
+                </span>
+                <span class="main-text">
+                    窈窕淑女，君子好逑。
+                </span>
+            </div>
+
+            <!-- ========== 第四節：Ruby 夾注 ========== -->
+            <h2>第四節　Ruby 夾注混合</h2>
+
+            <p>夾注中亦可加入 <code>ruby</code> 注音，適用於難字注讀：</p>
+
+            <div class="vertical-note">
+                <span class="note-text">
+                    <ruby>詩<rt>ㄕ</rt></ruby>者，志<ruby>之所<rt>ㄙㄨㄛˇ</rt></ruby>之也。
+                </span>
+                <span class="main-text">
+                    詩言志。
+                </span>
+            </div>
+
+            <!-- ========== 第五節：純段落對比 ========== -->
+            <h2>第五節　純段落正文</h2>
+
+            <p class="paragraph">
+                此節為不使用夾注的純段落正文，適用於一般敘述性文字。首行縮排兩字，標準行距一點八倍，兩端對齊。此段落不受夾注樣式影響，維持正常閱讀節奏。
+            </p>
+
+            <p class="paragraph">
+                再續一段，以展示長段文字在豎排中的呈現效果。中文豎排之妙，在於文字如流水般自上而下、自右而左，讀者目光隨字而行，自然形成韻律之感。
+            </p>
+
+        </section>
+
+    </section>
+</body>
+</html>
