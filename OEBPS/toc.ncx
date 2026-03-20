@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+    <head>
+        <meta name="dtb:uid"         content="urn:uuid:20260320-0000-0000-0000-000000000001"/>
+        <meta name="dtb:depth"        content="2"/>
+        <meta name="dtb:totalPageCount" content="0"/>
+        <meta name="dtb:maxPageNumber"  content="0"/>
+    </head>
+    <docTitle>
+        <text>繁體中文豎排書籍範本</text>
+    </docTitle>
+    <navMap>
+        <navPoint id="np-title" playOrder="1">
+            <navLabel><text>書名頁</text></navLabel>
+            <content src="xhtml/titlepage.xhtml"/>
+        </navPoint>
+        <navPoint id="np-ch1" playOrder="2">
+            <navLabel><text>第一章　概述</text></navLabel>
+            <content src="xhtml/chapter01.xhtml"/>
+            <navPoint id="np-ch1-s1" playOrder="3">
+                <navLabel><text>第一節　背景介紹</text></navLabel>
+                <content src="xhtml/chapter01.xhtml#s1-1"/>
+            </navPoint>
+            <navPoint id="np-ch1-s2" playOrder="4">
+                <navLabel><text>第二節　相關研究</text></navLabel>
+                <content src="xhtml/chapter01.xhtml#s1-2"/>
+            </navPoint>
+        </navPoint>
+        <navPoint id="np-ch2" playOrder="5">
+            <navLabel><text>第二章　方法</text></navLabel>
+            <content src="xhtml/chapter02.xhtml"/>
+            <navPoint id="np-ch2-s1" playOrder="6">
+                <navLabel><text>第一節　設計原則</text></navLabel>
+                <content src="xhtml/chapter02.xhtml#s2-1"/>
+            </navPoint>
+            <navPoint id="np-ch2-s2" playOrder="7">
+                <navLabel><text>第二節　實作細節</text></navLabel>
+                <content src="xhtml/chapter02.xhtml#s2-2"/>
+            </navPoint>
+        </navPoint>
+    </navMap>
+</ncx>
