@@ -1,0 +1,357 @@
+@charset "UTF-8";
+
+/* ================================================================
+   繁體中文豎排 EPUB 樣式表
+   Chinese Traditional Vertical Text EPUB Stylesheet
+
+   支援閱讀器：
+   ✅ Apple Books / iBooks
+   ✅ Google Play Books
+   ✅ Amazon Kindle (via Calibre 轉換)
+   ✅ Calibre
+   ✅ Thorium Reader (Readium)
+   ✅ KOReader
+   ✅ 主流 Android 閱讀器
+   ================================================================ */
+
+/* ================================================================
+   1. Root — 豎排書寫模式核心
+   ================================================================ */
+html {
+    /* EPUB 標準前綴 (最廣泛支援) */
+    -epub-writing-mode: vertical-rl;
+    -epub-text-orientation: upright;
+
+    /* WebKit 前綴 (iBooks, Google Play, Android) */
+    -webkit-writing-mode: vertical-rl;
+    -webkit-text-orientation: upright;
+
+    /* IE / 舊版 Edge */
+    -ms-writing-mode: tb-rl;
+
+    /* 標準屬性 (現代瀏覽器) */
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+
+    /* 字體 */
+    font-family: "Noto Serif CJK TC",
+                 "Noto Serif SC",
+                 "Source Han Serif TC",
+                 "Source Han Serif",
+                 "AR PL UMing TW",
+                 "AR PL New Sung",
+                 "Hiragino Mincho ProN",
+                 "Heisei Mincho",
+                 "SimSun",
+                 serif;
+
+    font-size: 1em;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+
+    /* 頁面邊距 */
+    margin: 0;
+    padding: 1em 1.5em;
+
+    /* 文字方向 */
+    direction: rtl;
+}
+
+/* ================================================================
+   2. Body — 主要文字容器
+   ================================================================ */
+body {
+    -epub-writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+
+    -webkit-text-orientation: upright;
+    -epub-text-orientation: upright;
+    text-orientation: upright;
+
+    /* 兩端對齊 */
+    text-align: justify;
+    text-align-last: justify;
+
+    /* 縱向行距 */
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+
+    /* 避免斷行 */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ================================================================
+   3. 段落
+   ================================================================ */
+p {
+    /* 豎排：上右下左 (top-right-bottom-left) */
+    margin: 0.3em 0;
+    text-indent: 2em;     /* 首行縮排：兩個全角字寬 */
+}
+
+/* ================================================================
+   4. 章節標題 — 保持橫排居中（對比豎排正文）
+   ================================================================ */
+h1, h2, h3, h4, h5, h6 {
+    /* 標題改回橫排居中 */
+    -webkit-writing-mode: horizontal-tb;
+    -epub-writing-mode: horizontal-tb;
+    -ms-writing-mode: lr-tb;
+    writing-mode: horizontal-tb;
+
+    /* 文字方向：混合（允許標點旋轉） */
+    -webkit-text-orientation: mixed;
+    text-orientation: mixed;
+
+    font-family: "Noto Serif CJK TC", "Source Han Serif TC", serif;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+h1 { font-size: 1.8em; margin: 1em 0; }
+h2 { font-size: 1.4em; margin: 0.8em 0; }
+h3 { font-size: 1.2em; margin: 0.6em 0; }
+
+/* ================================================================
+   5. 阿拉伯數字、英文、拉丁文字 — Tatechuyoko (橫排於豎文)
+   ================================================================ */
+.tcy {
+    /* CSS Text Level 4 — 直立數字 */
+    text-combine-upright: digits 4;
+
+    /* WebKit 舊寫法 */
+    -webkit-text-combine: horizontal;
+    -webkit-text-combine-upright: digits 4;
+
+    /* EPUB 3 標準寫法 */
+    -epub-text-combine: horizontal;
+}
+
+/* 所有數字自動直立 */
+span.tcy-num {
+    text-combine-upright: digits 4;
+    -webkit-text-combine-upright: digits 4;
+}
+
+/* ================================================================
+   6. Ruby 注音 (振假名 / 注音符號)
+   ================================================================ */
+ruby {
+    ruby-position: over;
+    -webkit-ruby-position: over;
+}
+
+ruby > rt {
+    font-size: 0.5em;
+    font-weight: normal;
+    text-orientation: upright;
+    -webkit-text-orientation: upright;
+}
+
+ruby > rp {
+    display: none;
+}
+
+/* ================================================================
+   7. 強調文字
+   ================================================================ */
+em {
+    font-style: normal;
+    /* 豎排中可用底線或加粗代替斜體 */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* ================================================================
+   8. 分頁控制 — 避免章節、段落被截斷
+   ================================================================ */
+h1, h2, h3, h4, h5, h6 {
+    page-break-before: avoid;
+    -webkit-column-break-before: avoid;
+    break-before: avoid;
+    page-break-after: always;
+    break-after: page;
+}
+
+p {
+    /* 避免段落中間分頁 */
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid-column;
+
+    /* 孤行控制：至少保留 N 行 */
+    orphans: 2;
+    widows: 2;
+}
+
+/* ================================================================
+   9. 圖片處理
+   ================================================================ */
+img {
+    max-width: 70%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    margin: 1em auto;
+
+    /* 圖片保持橫排 */
+    -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+}
+
+figure {
+    margin: 1em 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0.5em;
+    /* 圖說保持橫排 */
+    -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+}
+
+/* ================================================================
+   10. 引用區塊
+   ================================================================ */
+blockquote {
+    margin: 0.5em 1.5em;
+    padding: 0.5em 1em;
+    border-left: 3px solid #999;
+    background-color: rgba(0, 0, 0, 0.03);
+
+    -webkit-text-orientation: mixed;
+    text-orientation: mixed;
+}
+
+blockquote p {
+    text-indent: 0;
+    margin: 0.3em 0;
+}
+
+/* ================================================================
+   11. 列表
+   ================================================================ */
+ol, ul {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+}
+
+li {
+    margin: 0.2em 0;
+    -webkit-text-orientation: upright;
+    text-orientation: upright;
+}
+
+/* ================================================================
+   12. 表格
+   ================================================================ */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 1em auto;
+    font-size: 0.95em;
+
+    /* 表格保持橫排 */
+    -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 0.3em 0.6em;
+    text-align: center;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* ================================================================
+   13. 頁面設定 (@page)
+   ================================================================ */
+@page {
+    margin: 1em 1.5em;
+}
+
+/* ================================================================
+   14. 嵌入字體 (@font-face)
+   ================================================================ */
+/*
+   使用方式：取消注釋並放入字體檔案
+   字體路徑相對於 CSS 檔案位置（../fonts/）
+*/
+
+/*
+@font-face {
+    font-family: "Noto Serif CJK TC";
+    font-weight: normal;
+    font-style: normal;
+    src: url(../fonts/NotoSerifTC-Regular.otf) format("opentype");
+    -epub-font-format: opentype;
+}
+
+@font-face {
+    font-family: "Noto Serif CJK TC";
+    font-weight: bold;
+    font-style: normal;
+    src: url(../fonts/NotoSerifTC-Bold.otf) format("opentype");
+    -epub-font-format: opentype;
+}
+*/
+
+/* ================================================================
+   15. 特殊標記類
+   ================================================================ */
+
+/* 外字 / 生僻字 */
+.gaiji {
+    text-orientation: upright;
+    -webkit-text-orientation: upright;
+}
+
+/* 專有名詞 */
+.term {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+/* 註釋標記 */
+.note-marker {
+    font-size: 0.8em;
+    vertical-align: super;
+    -webkit-text-orientation: upright;
+    text-orientation: upright;
+}
+
+/* 詩詞（保持段落原樣，不首行縮排） */
+.poetry p {
+    text-indent: 0;
+    margin: 0.2em 0;
+    text-align: center;
+}
+
+/* 對話 / 引語 */
+.dialogue {
+    quotes: "「" "」" "『" "』";
+}
+
+.dialogue p::before {
+    content: open-quote;
+}
+
+.dialogue p::after {
+    content: close-quote;
+}
