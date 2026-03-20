@@ -36,6 +36,7 @@ epub-vertical-zh/
 | `ruby` 注音 | 繁體注音、振假名 | ✅ |
 | `page-progression-direction="rtl"` | 從右至左翻頁 | ✅ |
 | `dir="rtl"` + `xml:lang="zh-Hant"` | 繁體中文語言標記 | ✅ |
+| **雙行夾注（側注）** | `flex` 橫排＋各自豎排，小字紅色 | ✅ |
 | 圖片橫排處理 | 自動覆蓋為 `horizontal-tb` | ✅ |
 | 分頁控制 | 避免章節/段落中途截斷 | ✅ |
 | 嵌入字體 | `@font-face` 模板 | ✅ |
