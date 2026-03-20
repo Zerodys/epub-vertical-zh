@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      lang="zh-Hant"
+      dir="rtl">
+<head>
+    <title>目錄</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/vertical.css"/>
+</head>
+<body>
+    <!-- ========== 主要目錄 (toc) ========== -->
+    <nav epub:type="toc" id="toc">
+        <h1>目錄</h1>
+        <ol>
+            <li>
+                <a href="xhtml/titlepage.xhtml">書名頁</a>
+            </li>
+            <li>
+                <a href="xhtml/chapter01.xhtml">第一章　概述</a>
+                <ol>
+                    <li><a href="xhtml/chapter01.xhtml#s1-1">第一節　背景介紹</a></li>
+                    <li><a href="xhtml/chapter01.xhtml#s1-2">第二節　相關研究</a></li>
+                </ol>
+            </li>
+            <li>
+                <a href="xhtml/chapter02.xhtml">第二章　方法</a>
+                <ol>
+                    <li><a href="xhtml/chapter02.xhtml#s2-1">第一節　設計原則</a></li>
+                    <li><a href="xhtml/chapter02.xhtml#s2-2">第二節　實作細節</a></li>
+                </ol>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- ========== 地標導航 (landmarks) — 視覺隱藏 ========== -->
+    <nav epub:type="landmarks" id="landmarks" hidden="hidden">
+        <h1>導覽</h1>
+        <ol>
+            <li><a epub:type="cover"           href="xhtml/cover.xhtml">封面</a></li>
+            <li><a epub:type="titlepage"       href="xhtml/titlepage.xhtml">書名頁</a></li>
+            <li><a epub:type="toc"              href="nav.xhtml">目錄</a></li>
+            <li><a epub:type="bodymatter"      href="xhtml/chapter01.xhtml">正文</a></li>
+        </ol>
+    </nav>
+
+    <!-- ========== 頁面列表 (page-list) — 可選 ========== -->
+    <nav epub:type="page-list" id="page-list" hidden="hidden">
+        <h1>頁次</h1>
+        <ol>
+            <li><a href="xhtml/chapter01.xhtml#page1">第 1 頁</a></li>
+            <li><a href="xhtml/chapter02.xhtml#page2">第 2 頁</a></li>
+        </ol>
+    </nav>
+</body>
+</html>
