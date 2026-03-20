@@ -66,5 +66,21 @@
                 <content src="xhtml/chapter03.xhtml#s3-6"/>
             </navPoint>
         </navPoint>
+        <navPoint id="np-ch4" playOrder="15">
+            <navLabel><text>第四章　彈窗注釋</text></navLabel>
+            <content src="xhtml/chapter04.xhtml"/>
+            <navPoint id="np-ch4-s1" playOrder="16">
+                <navLabel><text>第一節　何謂彈窗注釋</text></navLabel>
+                <content src="xhtml/chapter04.xhtml#s4-1"/>
+            </navPoint>
+            <navPoint id="np-ch4-s2" playOrder="17">
+                <navLabel><text>第二節　《靜夜思》全文示例</text></navLabel>
+                <content src="xhtml/chapter04.xhtml#s4-2"/>
+            </navPoint>
+            <navPoint id="np-ch4-s3" playOrder="18">
+                <navLabel><text>第三節　實現原理</text></navLabel>
+                <content src="xhtml/chapter04.xhtml#s4-3"/>
+            </navPoint>
+        </navPoint>
         </navMap>
 </ncx>
