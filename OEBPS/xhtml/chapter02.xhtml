@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      lang="zh-Hant"
+      dir="rtl">
+<head>
+    <title>第二章　方法</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="styles/vertical.css"/>
+</head>
+<body>
+    <section epub:type="chapter" id="chapter02">
+
+        <h1>第二章　方法</h1>
+
+        <!-- ========== 第一節 ========== -->
+        <section epub:type="level1" id="s2-1">
+            <h2>第一節　設計原則</h2>
+
+            <p>實現繁體中文豎排 EPUB 需要遵循幾項核心設計原則。這些原則既能確保在現有閱讀器上的兼容性，又為未來的標準化預留擴展空間。</p>
+
+            <h3>一、書寫模式分層設定</h3>
+
+            <p>建議在 <code>html</code> 和 <code>body</code> 元素上同時設定書寫模式，確保雙重保險。範例如下：</p>
+
+            <pre>html  { writing-mode: vertical-rl; }
+body  { writing-mode: vertical-rl; }</pre>
+
+            <h3>二、Vendor Prefixes 完整性</h3>
+
+            <p>EPUB 閱讀器市場高度碎片化，必須同時提供多個前綴才能覆蓋絕大多數設備：</p>
+
+            <ul>
+                <li><code>-epub-writing-mode</code> — EPUB 標準前綴</li>
+                <li><code>-webkit-writing-mode</code> — Apple Books / Google Play Books</li>
+                <li><code>-ms-writing-mode</code> — IE / 舊版 Edge</li>
+                <li><code>writing-mode</code> — 現代標準屬性</li>
+            </ul>
+
+            <h3>三、翻頁方向一致性</h3>
+
+            <p>在 <code>content.opf</code> 的 <code>&lt;spine&gt;</code> 中必須設定：</p>
+
+            <pre>page-progression-direction="rtl"</pre>
+
+            <p>此屬性使閱讀器的頁面流向與豎排文字方向一致，確保從右至左翻頁的正確體驗。</p>
+        </section>
+
+        <!-- ========== 第二節 ========== -->
+        <section epub:type="level1" id="s2-2">
+            <h2>第二節　實作細節</h2>
+
+            <h3>一、字體選擇</h3>
+
+            <p>推薦使用以下字體系列，優先嵌入 Noto Serif CJK 或思源宋體：</p>
+
+            <ul>
+                <li><strong>Noto Serif CJK TC</strong> — Google / Adobe 合作開發</li>
+                <li><strong>思源宋體（Source Han Serif）</strong> — Adobe 開放字體</li>
+                <li><strong>標楷體（DFKai-SB）</strong> — 臺灣教育部門標準</li>
+                <li><strong>明體（MingLiU）</strong> — 香港常用</li>
+            </ul>
+
+            <h3>二、嵌入字體步驟</h3>
+
+            <p>在 EPUB 中嵌入中文字體需要三個步驟：</p>
+
+            <ol>
+                <li>在 <code>content.opf</code> 的 <code>&lt;manifest&gt;</code> 中聲明字體檔案</li>
+                <li>在 CSS 中使用 <code>@font-face</code> 規則引用</li>
+                <li>將字體檔案放入 <code>OEBPS/fonts/</code> 目錄</li>
+            </ol>
+
+            <h3>三、Tatechuyoko（縱中橫）</h3>
+
+            <p>對於阿拉伯數字、英文單詞或短拉丁文字，可以使用 <code>text-combine-upright</code> 屬性讓它們在豎排中保持橫排：</p>
+
+            <p class="poetry">這段包含<span class="tcy">2026</span>年的數字、<span class="tcy">PM</span>上午、以及<span class="tcy">ABC</span>英文字。</p>
+
+            <h3>四、分頁控制</h3>
+
+            <p>使用 <code>page-break-before</code>、<code>page-break-after</code> 和 <code>break-inside</code> 避免章節標題被截斷，以及段落在中間分頁：</p>
+
+            <pre>h1, h2 { page-break-before: avoid; break-before: avoid; }
+p       { page-break-inside: avoid; break-inside: avoid; }</pre>
+
+            <h3>五、Ruby 注音</h3>
+
+            <p>繁體中文常用 <code>&lt;ruby&gt;</code> 元素標註注音或振假名：</p>
+
+            <p>範例：<ruby>孔子<rt>ㄎㄨㄥˇ ㄗˇ</rt></ruby>、<ruby>詩經<rt>ㄕ ㄐㄧㄥ</rt></ruby></p>
+
+            <p>預設注音顯示在文字上方（<code>ruby-position: over</code>），如需顯示在下方，可改為 <code>under</code>。</p>
+
+            <h3>六、封面設計</h3>
+
+            <p>建議使用 SVG 格式製作封面，以確保在不同螢幕尺寸和解析度上的一致顯示。本範本中的封面即採用 SVG 格式，包含書名裝飾線和背景。</p>
+        </section>
+
+    </section>
+</body>
+</html>
